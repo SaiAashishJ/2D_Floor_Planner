@@ -66,7 +66,7 @@ public class Project implements ActionListener{
         JPanel furniturePanel = new JPanel();
         furniturePanel.setBounds(30, 520, 253, 92);
         furniturePanel.setBackground(new Color(0xFFFFFF));
-
+// aashish
         JPanel fixturePanel = new JPanel();
         fixturePanel.setBounds(30, 622, 253, 92);
         fixturePanel.setBackground(new Color(0xFFFFFF));
