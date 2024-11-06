@@ -10,8 +10,9 @@ public class Project implements ActionListener{
     public Frame frame;
     public JPanel canvasPanel;    // The panel where the floor plan is to be drawn
     public JPanel controlPanel;   // The panel where the controls buttons will be added
-    public  ArrayList<JPanel> rooms = new ArrayList<JPanel>();
+    public ArrayList<JPanel> rooms = new ArrayList<JPanel>();
     public JButton newRoom;
+    public JLayeredPane floor;
     int roomNum = 0;
 
     public Project() {
@@ -27,6 +28,7 @@ public class Project implements ActionListener{
 
         canvasPanel.setBounds(333, 10, 935, 725);
         canvasPanel.setBackground(Color.lightGray);
+        canvasPanel.setLayout(null);
 
         //Control Panel
 
@@ -70,6 +72,12 @@ public class Project implements ActionListener{
         JPanel fixturePanel = new JPanel();
         fixturePanel.setBounds(30, 622, 253, 92);
         fixturePanel.setBackground(new Color(0xFFFFFF));
+
+        floor=new JLayeredPane();
+        floor.setBorder(border);
+        floor.setBounds(70,70,400,400);
+        floor.setLayout(new FlowLayout(FlowLayout.LEFT,0,0));
+        canvasPanel.add(floor);
 
 
 // Vikrant
@@ -240,6 +248,8 @@ public class Project implements ActionListener{
     }
 
     public static void main(String[] args) {
+        JPanel j1=new JPanel();
+        j1.setPreferredSize(new Dimension(100, 100));
         Project p1 = new Project();
     }
 
@@ -255,6 +265,13 @@ public class Project implements ActionListener{
     {
         rooms.add(new JPanel());
         rooms.get(roomNum).setPreferredSize(new Dimension(l, b));
+        // rooms.get(roomNum).setBounds(100,100,l,b);
+        rooms.get(roomNum).setVisible(true);
+        
+        
+        
+        rooms.get(roomNum).setBorder(BorderFactory.createLineBorder(Color.black, 2));
+        floor.add(rooms.get(roomNum),Integer.valueOf(2));
         roomNum++;
     }
 }
